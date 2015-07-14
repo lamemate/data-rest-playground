@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
@@ -30,6 +32,7 @@ public class AccountIdentifier implements Serializable
 	@ManyToOne
 	@JoinColumn(name = "account_id", referencedColumnName = "id")
 	@JsonBackReference(value = "accountIdentifiers")
+	@RestResource(rel = "accountIdentifiers", path = "accountidentifiers")
 	private Account account;
 
 	protected AccountIdentifier() {}
